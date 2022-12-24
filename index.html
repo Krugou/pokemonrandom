@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon viewer</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+    }
+    button {
+        margin: 10px;
+        padding: 10px;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        font-size: 20px;
+        padding: 1rem;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #e6e6e6e6;
+        color: #000;
+    }
+    img {
+        width: 60vw;
+        height: auto;
+    }
+</style>
+
+</head>
+
+<body>
+    <button onclick="random()">random</button>
+    <button onclick="onebyone()">onebyone</button>
+    <div id="root"></div>
+</body>
+<script defer>
+    const root = document.getElementById("root");
+    const random = () => {
+
+        const random = Math.floor(Math.random() * 906) + 1;
+        root.innerHTML = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${random}.png" alt="">`;
+    }
+    const onebyone = () => {
+        let i = 1;
+        const interval = setInterval(() => {
+            root.innerHTML = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i}.png" alt="">`;
+            i++;
+            if (i > 906) {
+                clearInterval(interval);
+            }
+        }, 3000);
+    }
+</script>
+
+</html>
